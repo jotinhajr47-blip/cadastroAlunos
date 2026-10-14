@@ -1,0 +1,240 @@
+/* ===== Variáveis: cores e medidas guardadas em um lugar só ===== */
+:root {
+  --fundo: #0b0f1a;
+  --superficie: #121826;
+  --superficie-2: #182033;
+  --borda: rgba(255, 255, 255, 0.08);
+  --texto: #e6e9f2;
+  --texto-suave: #8b93a7;
+  --destaque: #22d3ee;
+  --destaque-2: #6366f1;
+  --raio: 14px;
+
+  /* Faz os elementos nativos (lista do select, barra de rolagem) ficarem escuros */
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--texto);
+  min-height: 100vh;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.18), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(34, 211, 238, 0.12), transparent 40%),
+    var(--fundo);
+  background-attachment: fixed;
+}
+
+/* ===== Layout: duas colunas no computador ===== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+}
+
+/* Título ocupa as duas colunas, com texto em gradiente */
+.container h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(90deg, var(--destaque), var(--destaque-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Os dois "painéis": formulário e lista */
+.painel-form,
+.painel-lista {
+  min-width: 0;
+  /* evita que conteúdo largo estoure a coluna */
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 24px;
+}
+
+h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ===== Campos do formulário e filtro ===== */
+input,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 6px 0;
+  background: var(--superficie-2);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+  color: var(--texto-suave);
+}
+
+/* Destaque quando o campo está selecionado */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--destaque);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
+
+option {
+  background: var(--superficie-2);
+  color: var(--texto);
+}
+
+/* ===== Botão ===== */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--destaque-2), var(--destaque));
+  color: #06121f;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 211, 238, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ===== Contador (etiqueta arredondada) ===== */
+#contador {
+  display: inline-block;
+  margin: 12px 0 16px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--destaque);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===== Lista de alunos ===== */
+#tabelaAlunos {
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+#tabelaAlunos::-webkit-scrollbar {
+  width: 6px;
+}
+
+#tabelaAlunos::-webkit-scrollbar-thumb {
+  background: var(--destaque-2);
+  border-radius: 10px;
+}
+
+#tabelaAlunos::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ===== Card de cada aluno ===== */
+.aluno-card {
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--destaque);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: transform 0.15s, border-left-color 0.2s;
+}
+
+.aluno-card:hover {
+  transform: translateX(4px);
+  border-left-color: var(--destaque-2);
+}
+
+.aluno-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  /* e-mails longos quebram em vez de estourar o card */
+}
+
+.aluno-card .aluno-meta {
+  color: var(--texto-suave);
+  font-size: 13px;
+}
+
+.aluno-card .aluno-meta strong {
+  color: var(--texto);
+  font-weight: 500;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin: 4px 0 6px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.rodape {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+.mensagem {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mensagem.sucesso {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #4ade80;
+}
+
+.mensagem.erro {
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #f87171;
+}
+
+/* ===== Celular e telas estreitas: uma coluna só ===== */
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

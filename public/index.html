@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Cadastro de Alunos</h1>
+        <!-- Aqui tive a ideia de criar uma section para poder agrupar os elementos do formulário de novos alunos -->
+        <section class="painel-form">
+            <h2>Novo aluno</h2>
+            <form id="formAluno">
+                <input type="text" id="nome" placeholder="Nome do aluno" required>
+                <input type="email" id="email" placeholder="Seu E-mail" required>
+                <input type="number" id="idade" placeholder="Idade" min="18" required>
+                <!-- Eu quis adicionar uma seleção de cursos, para ficar mais organizado, coloquei em ordem alfabética os cursos que escolhi -->
+                <select id="curso" name="curso" required>
+                    <option value="" disabled selected>Selecione o seu curso...</option>
+                    <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                    <option value="Biomedicina">Biomedicina</option>
+                    <option value="Ciências Contábeis">Ciências Contábeis</option>
+                    <option value="Ciências da Computação">Ciências da Computação</option>
+                    <option value="Ciências Sociais">Ciências Sociais</option>
+                    <option value="Educação Física">Educação Física</option>
+                    <option value="Engenharia Civil">Engenharia Civil</option>
+                    <option value="Engenharia da Computação">Engenharia da Computação</option>
+                    <option value="Farmácia">Farmácia</option>
+                    <option value="Física">Física</option>
+                    <option value="Fonoaudiologia">Fonoaudiologia</option>
+                    <option value="Matemática">Matemática</option>
+                    <option value="Medicina Veterinária">Medicina Veterinária</option>
+                    <option value="Medicina">Medicina</option>
+                    <option value="Odontologia">Odontologia</option>
+                    <option value="Psicologia">Psicologia</option>
+                    <option value="Publicidade e Propaganda">Publicidade e Propaganda</option>
+                    <option value="Química">Química</option>
+                    <option value="Sociologia">Sociologia</option>
+                </select>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <div id="caixaMensagem" role="status"></div>
+        </section>
+        <!-- Aqui eu já acicionei outra section justamente para poder mostrar os alunos que já foram cadas -->
+        <section class="painel-lista">
+            <h2>Alunos cadastrados</h2>
+            <!-- Aqui a ideia já foi deixar com uma cara mais "profissional" com um filtro por cursos -->
+            <select id="filtroCurso">
+                <option value="">Todos os cursos</option>
+                <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                <option value="Biomedicina">Biomedicina</option>
+                <option value="Ciências Contábeis">Ciências Contábeis</option>
+                <option value="Ciências da Computação">Ciências da Computação</option>
+                <option value="Ciências Sociais">Ciências Sociais</option>
+                <option value="Educação Física">Educação Física</option>
+                <option value="Engenharia Civil">Engenharia Civil</option>
+                <option value="Engenharia da Computação">Engenharia da Computação</option>
+                <option value="Farmácia">Farmácia</option>
+                <option value="Física">Física</option>
+                <option value="Fonoaudiologia">Fonoaudiologia</option>
+                <option value="Matemática">Matemática</option>
+                <option value="Medicina Veterinária">Medicina Veterinária</option>
+                <option value="Medicina">Medicina</option>
+                <option value="Odontologia">Odontologia</option>
+                <option value="Psicologia">Psicologia</option>
+                <option value="Publicidade e Propaganda">Publicidade e Propaganda</option>
+                <option value="Química">Química</option>
+                <option value="Sociologia">Sociologia</option>
+            </select>
+
+            <div id="contador">Total de alunos: 0</div>
+
+            <div id="tabelaAlunos"></div>
+        </section>
+        <footer class="rodape">
+            <p>Desenvolvido por Herisson Júnior · Desenvolvimento de Aplicações para a Internet</p>
+            <p>HTML · CSS · JavaScript · Node.js · Express</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
